@@ -36,26 +36,57 @@ for i in range (cantidad):
 
 
     nota_final = (desarrollo * 0.6 ) + (ingles * 0.2) + (habilidades *0.2)
-
+    
+    suma_notas += nota_final
+    
+    if nota_final <50:
+        clasificacion = "Reprobado"
+        reprobados += 1
+        
+    elif nota_final < 80 :
+        clasificacion = "Regular" 
+        regulares += 1
+        
+    else:
+        clasificacion = "Excelente"
+        excelentes  += 1   
+        
+        if nota_final > mejor_nota:
+            mejor_nota = nota_final
+            mejor_coder = nombre
+            
+            
+            
+        
+        
     estudiante = {
                 "nombre" : nombre,
-                "nota_final" : nota_final
-
+                "nota_final" : nota_final,
+                "clasificacion" : clasificacion
             }
     estudiantes.append(estudiante) 
     
     
 print ("\n RESULTADOS")
 
-for est in estudiantes:
-    if est ["nota_final"] < 50:
-        
-        print(f"MODULO{modulos} va perdiendo ")
+print("\n RESULTADO ")
 
-        print(f"""{est['nombre']} -> 
-              {round(est['nota_final'],2)} va perdiendo""")
-            
-    else:
-          print(f"MODULO {modulos} Aprobado ")
-          print(f"""{est['nombre']} -> 
-              {round(est['nota_final'],2)} Aprobó""")
+for est in estudiantes:
+    print(f"{est['nombre']} -> {round(est['nota_final'],2)} -> ({est['clasificacion']})")
+    
+    promedio_grupo = suma_notas /
+    len(estudiantes)
+    
+    print("\n RESUMEN DEL MODULO")
+    print("Modulo:", modulos)
+    print("coders resguistrados:", les(estudiantes))
+    print("Promedio general:" , round(promedio_grupo,2))
+    
+    print("\n CLASIFICACION DEL GRUPO")
+    
+    print("Reprobados:", reprobados)
+    print("Regulares:", regulares)
+    print("Excelentes:", excelentes)
+    
+    print("\n MEJOR CODER DEL GRUPO")
+    print(mejor_coder,"-", round(mejor_nota,2))
